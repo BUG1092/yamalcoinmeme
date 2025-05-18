@@ -1,206 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YAMALCOIN ⚽🚀 Ultimate Meme Coin</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YamalCoin - The Future of Meme Coins</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --gold: #FFD700;
-      --blue: #00B4FF;
-      --dark: #0a0a20;
-      --neon: 0 0 10px var(--blue), 0 0 20px var(--gold);
+      --barca-blue: #1d1f90;
+      --barca-red: #9e1b32;
+      --white: #ffffff;
+      --gray: #f0f0f0;
     }
-    
-    body {
+
+    * {
+      box-sizing: border-box;
       margin: 0;
-      background: var(--dark) url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center/cover;
-      color: white;
-      font-family: 'Rajdhani', sans-serif;
-      overflow-x: hidden;
+      padding: 0;
+      scroll-behavior: smooth;
+      font-family: 'Inter', sans-serif;
     }
 
-    /* ANIMAȚIE FUNDAL - Stele care cad */
-    @keyframes falling {
-      0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    body {
+      background-color: var(--white);
+      color: #111;
     }
-    .stars {
-      position: fixed;
+
+    header {
+      background: linear-gradient(to right, var(--barca-blue), var(--barca-red));
+      color: var(--white);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
       top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      overflow: hidden;
-    }
-    .star {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: white;
-      border-radius: 50%;
-      animation: falling linear infinite;
+      z-index: 1000;
     }
 
-    /* HERO SECTION - Animatie 3D */
+    header nav a {
+      color: var(--white);
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.3s ease;
+    }
+
+    header nav a:hover {
+      opacity: 0.7;
+    }
+
     .hero {
       height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      perspective: 1000px;
-    }
-    .hero-content {
-      transform-style: preserve-3d;
-      animation: float3d 8s ease-in-out infinite;
-    }
-    @keyframes float3d {
-      0%, 100% { transform: rotateY(0deg) translateY(0); }
-      50% { transform: rotateY(10deg) translateY(-20px); }
+      background: linear-gradient(135deg, var(--barca-blue), var(--barca-red));
+      color: var(--white);
+      padding: 2rem;
     }
 
-    h1 {
-      font-family: 'Bangers', cursive;
-      font-size: 5rem;
-      letter-spacing: 3px;
-      color: var(--gold);
-      margin: 0;
-      text-shadow: var(--neon);
-      animation: glow 2s infinite alternate, shake 0.5s infinite alternate;
-    }
-    @keyframes shake {
-      0% { transform: translateX(-3px); }
-      100% { transform: translateX(3px); }
+    .hero h1 {
+      font-size: 3rem;
+      animation: fadeInDown 1s ease-in-out;
     }
 
-    /* LOGO - Rotire 3D + Glow */
-    .logo {
-      width: 200px;
-      filter: drop-shadow(0 0 15px var(--blue));
-      animation: 
-        spin 20s linear infinite, 
-        pulse 2s infinite alternate;
-    }
-    @keyframes spin {
-      100% { transform: rotateY(360deg); }
+    .hero p {
+      font-size: 1.25rem;
+      margin-top: 1rem;
+      animation: fadeInUp 1.2s ease-in-out;
     }
 
-    /* BUTON - Efect de foc */
-    .buy-button {
-      background: transparent;
-      color: white;
-      border: 2px solid var(--blue);
-      padding: 15px 40px;
-      font-size: 1.2rem;
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    section h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      color: var(--barca-blue);
+    }
+
+    .tokenomics, .roadmap, .about, .contact {
+      background: var(--gray);
+      border-radius: 12px;
+      padding: 2rem;
       margin-top: 2rem;
-      cursor: pointer;
-      font-family: 'Bangers', cursive;
-      letter-spacing: 2px;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s;
-      z-index: 1;
-    }
-    .buy-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(0,180,255,0.4), transparent);
-      transition: 0.5s;
-      z-index: -1;
-    }
-    .buy-button:hover::before {
-      left: 100%;
-    }
-    .buy-button:hover {
-      box-shadow: 0 0 20px var(--blue), 0 0 40px var(--gold);
-      transform: scale(1.05);
     }
 
-    /* MINGI DE FOTBAL FLUTURÂND */
-    .football {
-      position: absolute;
-      width: 40px;
-      opacity: 0.7;
-      animation: flying 15s linear infinite;
-    }
-    @keyframes flying {
-      0% { transform: translate(0, 0) rotate(0deg); }
-      25% { transform: translate(50vw, 30vh) rotate(90deg); }
-      50% { transform: translate(80vw, 10vh) rotate(180deg); }
-      75% { transform: translate(30vw, 50vh) rotate(270deg); }
-      100% { transform: translate(0, 0) rotate(360deg); }
+    footer {
+      background-color: var(--barca-blue);
+      color: var(--white);
+      text-align: center;
+      padding: 1rem;
+      margin-top: 3rem;
     }
   </style>
 </head>
 <body>
-  <!-- ANIMAȚIE STELE -->
-  <div class="stars" id="stars"></div>
+  <header>
+    <h1>YamalCoin</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#tokenomics">Tokenomics</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="hero-content">
-      <img src="YAMAL_LOGO.png" alt="YamalCoin" class="logo">
-      <h1>YAMALCOIN</h1>
-      <p class="price-ticker">PRICE: <span id="price">$0.0000</span></p>
-      <button class="buy-button" onclick="window.open('https://pancakeswap.finance/swap?outputCurrency=YOUR_CONTRACT_ADDRESS')">
-        BUY NOW ⚽
-      </button>
+  <div class="hero" id="welcome">
+    <div>
+      <h1>Welcome to YamalCoin</h1>
+      <p>The meme coin inspired by Lamine Yamal and powered by the spirit of Barça</p>
+    </div>
+  </div>
+
+  <section id="about">
+    <h2>About</h2>
+    <div class="about">
+      <p>YamalCoin is a community-driven meme coin that celebrates the energy of Lamine Yamal and FC Barcelona's legendary colors. Built on BNB Smart Chain, YamalCoin combines fun, speed, and simplicity with a powerful branding identity.</p>
     </div>
   </section>
 
-  <!-- MINGI DE FOTBAL ANIMATE -->
-  <img src="https://cdn-icons-png.flaticon.com/512/53/53283.png" class="football" style="top:20%; left:10%; animation-delay:0s">
-  <img src="https://cdn-icons-png.flaticon.com/512/53/53283.png" class="football" style="top:70%; left:80%; animation-delay:3s">
-  <img src="https://cdn-icons-png.flaticon.com/512/53/53283.png" class="football" style="top:40%; left:60%; animation-delay:7s">
+  <section id="tokenomics">
+    <h2>Tokenomics</h2>
+    <div class="tokenomics">
+      <ul>
+        <li>Total Supply: 1,000,000,000 YML</li>
+        <li>1% Burn Tax</li>
+        <li>1% Marketing Tax</li>
+        <li>1% Reflection to holders</li>
+      </ul>
+    </div>
+  </section>
 
-  <script>
-    // GENERARE STELE
-    for (let i = 0; i < 100; i++) {
-      const star = document.createElement('div');
-      star.className = 'star';
-      star.style.left = `${Math.random() * 100}%`;
-      star.style.top = `${Math.random() * 100}%`;
-      star.style.animationDuration = `${5 + Math.random() * 10}s`;
-      star.style.animationDelay = `${Math.random() * 5}s`;
-      star.style.width = `${1 + Math.random() * 3}px`;
-      star.style.height = star.style.width;
-      document.getElementById('stars').appendChild(star);
-    }
+  <section id="roadmap">
+    <h2>Roadmap</h2>
+    <div class="roadmap">
+      <ul>
+        <li>✅ Token Launch</li>
+        <li>✅ Website Live</li>
+        <li>🔜 Social Media Setup</li>
+        <li>🔜 Community Building</li>
+        <li>🔜 Listing on CoinMarketCap & CoinGecko</li>
+        <li>🔜 NFT Integration</li>
+      </ul>
+    </div>
+  </section>
 
-    // EFECT TYPING LA TITLU
-    const title = document.querySelector('h1');
-    const originalText = title.innerText;
-    title.innerText = '';
-    let i = 0;
-    const typing = setInterval(() => {
-      title.innerText += originalText[i];
-      i++;
-      if (i === originalText.length) clearInterval(typing);
-    }, 150);
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact">
+      <p>Follow us on social media and stay connected for upcoming announcements.</p>
+      <p>Email: contact@yamalc.io</p>
+    </div>
+  </section>
 
-    // PREȚ DIN API (SIMULAT)
-    setInterval(() => {
-      const randomChange = (Math.random() - 0.5) * 0.0005;
-      const currentPrice = parseFloat(document.getElementById('price').innerText.replace('$', '') || 0.001;
-      const newPrice = Math.max(0.0001, currentPrice + randomChange).toFixed(4);
-      document.getElementById('price').innerText = `$${newPrice}`;
-      
-      // Schimbă culoarea în funcție de trend
-      if (randomChange > 0) {
-        document.getElementById('price').style.color = '#00ff00';
-      } else {
-        document.getElementById('price').style.color = '#ff0000';
-      }
-    }, 2000);
-  </script>
+  <footer>
+    <p>© 2025 YamalCoin. All rights reserved.</p>
+  </footer>
 </body>
 </html>
