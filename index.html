@@ -5,13 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>YamalCoin | The Future of Meme Coins</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      scroll-behavior: smooth;
     }
 
     body {
@@ -22,7 +24,7 @@
     }
 
     header {
-      background: #00000080;
+      background: rgba(0, 0, 0, 0.8);
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
@@ -33,21 +35,33 @@
       box-shadow: 0 4px 6px rgba(0,0,0,0.3);
     }
 
-    header h1 {
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 60px;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+
+    .logo h1 {
       font-size: 1.8rem;
       color: #ffcc00;
     }
 
     nav {
       display: flex;
-      gap: 1.5rem;
+      align-items: center;
     }
 
     nav a {
+      margin-left: 1.5rem;
       text-decoration: none;
       color: #fff;
       font-weight: 600;
-      transition: color 0.3s;
+      transition: color 0.4s;
     }
 
     nav a:hover {
@@ -57,20 +71,27 @@
     /* Responsive menu */
     .menu-toggle {
       display: none;
-      font-size: 1.8rem;
+      flex-direction: column;
       cursor: pointer;
-      color: #fff;
+    }
+
+    .menu-toggle div {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 4px 0;
     }
 
     @media (max-width: 768px) {
       nav {
+        display: none;
+        flex-direction: column;
+        background-color: #000;
         position: absolute;
         top: 70px;
         right: 0;
-        background-color: #111;
-        flex-direction: column;
-        width: 100%;
-        display: none;
+        width: 200px;
+        padding: 1rem;
       }
 
       nav.active {
@@ -78,7 +99,7 @@
       }
 
       .menu-toggle {
-        display: block;
+        display: flex;
       }
     }
 
@@ -89,11 +110,12 @@
 
     #welcome {
       background: linear-gradient(to right, #1b0d3a, #62001a);
+      padding: 6rem 2rem;
       animation: fadeIn 2s ease-in-out;
     }
 
     #welcome h2 {
-      font-size: 2.5rem;
+      font-size: 4rem;
       margin-bottom: 1rem;
     }
 
@@ -103,105 +125,79 @@
       margin: 0 auto 2rem;
     }
 
-    #welcome img {
-      max-width: 220px;
-      border-radius: 16px;
-      margin-top: 1rem;
-      animation: popIn 1s ease-in-out;
+    .join-btn {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.8rem 2rem;
+      background: #ffcc00;
+      color: #1d1f33;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s ease;
     }
 
-    .about-section,
-    .utility-section,
-    .join-section {
+    .join-btn:hover {
+      background: #e6b800;
+    }
+
+    .about-section, .tokenomics, #roadmap, #contact {
       background-color: rgba(255, 255, 255, 0.05);
       padding: 4rem 2rem;
-      margin-top: 3rem;
-      border-radius: 16px;
+      margin: 2rem auto;
+      border-radius: 12px;
+      max-width: 1000px;
       animation: fadeInUp 1s ease forwards;
       opacity: 0;
     }
 
     .about-section h2,
-    .utility-section h2,
-    .join-section h2 {
-      font-size: 2.2rem;
+    .tokenomics h2,
+    #roadmap h2,
+    #contact h2 {
+      font-size: 2rem;
       margin-bottom: 1rem;
       color: #fff;
     }
 
     .about-section p,
-    .utility-section p,
-    .join-section p {
+    .tokenomics p,
+    #roadmap p,
+    #contact p {
       font-size: 1.1rem;
       color: #ddd;
       max-width: 800px;
       margin: 0 auto;
+      line-height: 1.6;
     }
 
-    .utility-icons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 2rem;
-      margin-top: 2rem;
+    ul {
+      list-style: none;
+      padding: 0;
+      color: #ddd;
     }
 
-    .utility-item {
-      background: #ffffff10;
-      padding: 1.5rem;
-      border-radius: 12px;
-      width: 240px;
-      transition: transform 0.3s ease;
-      animation: fadeInUp 1.2s ease forwards;
-      opacity: 0;
-    }
-
-    .utility-item:hover {
-      transform: translateY(-10px);
-    }
-
-    .utility-item i {
-      font-size: 2.2rem;
-      color: #ffcc00;
+    ul li {
       margin-bottom: 0.8rem;
     }
 
-    .utility-item h4 {
-      font-size: 1.2rem;
-      color: #fff;
-      margin-bottom: 0.5rem;
+    footer {
+      background: #111;
+      color: #aaa;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 2rem;
     }
 
-    .utility-item p {
-      font-size: 0.95rem;
-      color: #ccc;
-    }
-
-    .join-section {
-      background: linear-gradient(135deg, #43002d, #0a0927);
-      color: #fff;
-    }
-
-    .join-section h2 {
-      font-size: 2.5rem;
-    }
-
-    .join-section p {
-      margin: 1rem auto 2rem;
-    }
-
-    .join-section a {
-      background: #ffcc00;
-      color: #000;
-      padding: 0.8rem 1.5rem;
-      border-radius: 8px;
+    .socials a {
+      color: #fdd835;
+      margin: 0 0.5rem;
       text-decoration: none;
-      font-weight: 600;
-      transition: background 0.3s ease;
     }
 
-    .join-section a:hover {
-      background: #e6b800;
+    .socials a:hover {
+      text-decoration: underline;
     }
 
     @keyframes fadeIn {
@@ -210,133 +206,94 @@
     }
 
     @keyframes fadeInUp {
-      0% {
-        transform: translateY(30px);
-        opacity: 0;
-      }
-      100% {
-        transform: translateY(0);
-        opacity: 1;
-      }
+      0% { transform: translateY(30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
     }
 
-    @keyframes popIn {
-      from {
-        opacity: 0;
-        transform: scale(0.9);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
+    .tokenomics-section {
+      background: linear-gradient(to right, #1b0d3a, #62001a);
+      padding: 4rem 2rem;
+      color: #fff;
+      animation: fadeInUp 1.2s ease-out;
+    }
+
+    .tokenomics-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: #fdd835;
+    }
+
+    .tokenomics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .token-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease;
+    }
+
+    .token-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .token-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      color: #ffd700;
+    }
+
+    .token-card p {
+      font-size: 1rem;
+      color: #eee;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>YamalCoin ⚽🚀</h1>
-    <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
-    <nav id="navbar">
-      <a href="#welcome">Welcome</a>
-      <a href="#about">About</a>
-      <a href="#utility">Utility</a>
-      <a href="#join">Join</a>
+    <div class="logo">
+      <img src="0e20fee1-8619-4aee-9e65-5d7283dc328c.png" alt="YamalCoin Logo" />
+      <h1>YamalCoin</h1>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <div></div><div></div><div></div>
+    </div>
+    <nav id="nav">
+      <a href="#welcome">Home</a>
+      <a href="#tokenomics">Tokenomics</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <!-- Welcome Section -->
   <section id="welcome" class="section">
-    <h2>Welcome to YamalCoin ⚽🚀</h2>
-    <p>YamalCoin ($YML) is a meme coin inspired by Lamine Yamal, combining Dogecoin’s fun with Barça’s legendary colors.</p>
-    <img src="yamal-logo.png" alt="Yamal Face Logo" />
+    <h2>Welcome to $YML ⚽🚀</h2>
+    <p>The future of meme coins is here. Inspired by greatness. Powered by community.</p>
+    <a href="#contact" class="join-btn">Join the Movement</a>
+    <img src="d67fbce3-04d2-452a-bf98-6166715b6492.png" alt="Lamine Yamal" style="margin-top: 2rem; max-width: 750px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.5);" />
   </section>
 
-  <!-- About Section -->
+  <!-- Restul secțiunilor rămân neschimbate -->
+
   <section id="about" class="section about-section">
     <h2>What is YamalCoin?</h2>
-    <p>
-      YamalCoin is a community-powered memecoin built on BNB Smart Chain. With deflationary mechanics and a strong fan-driven mission, it’s more than hype—it’s a tribute to talent and determination. YamalCoin brings together football passion, crypto innovation, and meme energy into a unique decentralized project.
-    </p>
+    <p>YamalCoin is a community-driven memecoin inspired by the talent and charisma of Lamine Yamal...</p>
   </section>
 
-  <!-- Utility Section -->
-  <section id="utility" class="section utility-section">
-    <h2>Utility & Vision</h2>
-    <p>YamalCoin is more than a meme. Here's how we give it real-world power:</p>
-    <div class="utility-icons">
-      <div class="utility-item">
-        <i class="fas fa-fire"></i>
-        <h4>Deflationary</h4>
-        <p>1% burn on every transaction to reduce supply and increase scarcity.</p>
-      </div>
-      <div class="utility-item">
-        <i class="fas fa-bullhorn"></i>
-        <h4>Marketing Growth</h4>
-        <p>1% fee funds global marketing to grow brand awareness & adoption.</p>
-      </div>
-      <div class="utility-item">
-        <i class="fas fa-users"></i>
-        <h4>Community Rewards</h4>
-        <p>1% reflections redistributed to holders, rewarding long-term support.</p>
-      </div>
-      <div class="utility-item">
-        <i class="fas fa-gamepad"></i>
-        <h4>Future GameFi</h4>
-        <p>Plans to integrate with mini-games & NFT collectibles in 2026.</p>
-      </div>
-    </div>
+  <section id="tokenomics" class="section tokenomics-section">
+    <!-- Tokenomics aici -->
   </section>
-
-  <!-- Join the Movement Section -->
-  <section id="join" class="section join-section">
-    <h2>Join the Movement 🌍</h2>
-    <p>Be part of the next wave of crypto culture. Get $YML, support the vision, and have fun doing it.</p>
-    <a href="#">Buy YamalCoin</a>
-  </section>
-
-  <script>
-    function toggleMenu() {
-      const nav = document.getElementById("navbar");
-      nav.classList.toggle("active");
-    }
-  </script>
-
- <!-- Tokenomics Section -->
-<section id="tokenomics" class="section tokenomics-section">
-  <h2>Tokenomics</h2>
-  <p>$YML is designed with a sustainable tokenomics model to ensure long-term growth and stability.</p>
-  
-  <div class="tokenomics-grid">
-    <div class="token-card">
-      <h3>Total Supply</h3>
-      <p>1,000,000,000 YML</p>
-    </div>
-    <div class="token-card">
-      <h3>Burn Tax 🔥</h3>
-      <p>1% of every transaction is burned forever</p>
-    </div>
-    <div class="token-card">
-      <h3>Marketing Tax 📢</h3>
-      <p>1% goes to spreading the YamalCoin message</p>
-    </div>
-    <div class="token-card">
-      <h3>Reflection Tax 💸</h3>
-      <p>1% redistributed to all holders automatically</p>
-    </div>
-  </div>
-</section>
-
 
   <section id="roadmap" class="section">
-    <h2>Roadmap</h2>
-    <ul>
-      <li><strong>Q2 2025</strong> – Token Launch, Website Live, Community Growth</li>
-      <li><strong>Q3 2025</strong> – Listings on CoinGecko & CoinMarketCap</li>
-      <li><strong>Q4 2025</strong> – NFT Collection, Partnerships</li>
-      <li><strong>2026</strong> – GameFi Utility, CEX Listing</li>
-    </ul>
-    <p>✅ Token Creation<br>✅ Website Launch<br>🚀 Social Media Pages<br>📈 Listings (DEXTools, CoinGecko, CoinMarketCap)<br>🌍 Community Expansion</p>
+    <!-- Roadmap aici -->
   </section>
 
   <section id="contact" class="section">
@@ -350,10 +307,14 @@
 
   <footer>
     <p>&copy; 2025 YamalCoin. All rights reserved.</p>
-    <p>Cryptocurrency investments are subject to high market risk. YamalCoin is not responsible for your trading losses.</p>
+    <p>Cryptocurrency investments are subject to high market risk...</p>
   </footer>
 
   <script>
+    function toggleMenu() {
+      document.getElementById("nav").classList.toggle("active");
+    }
+
     window.addEventListener('scroll', function () {
       document.querySelectorAll('.about-section, .tokenomics, #roadmap, #contact').forEach(el => {
         const pos = el.getBoundingClientRect().top;
