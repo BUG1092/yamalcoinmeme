@@ -11,6 +11,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      scroll-behavior: smooth;
     }
 
     body {
@@ -37,8 +38,12 @@
       color: #ffcc00;
     }
 
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+
     nav a {
-      margin-left: 1.5rem;
       text-decoration: none;
       color: #fff;
       font-weight: 600;
@@ -47,6 +52,34 @@
 
     nav a:hover {
       color: #ffcc00;
+    }
+
+    /* Responsive menu */
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background-color: #111;
+        flex-direction: column;
+        width: 100%;
+        display: none;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
     }
 
     .section {
@@ -78,7 +111,8 @@
     }
 
     .about-section,
-    .utility-section {
+    .utility-section,
+    .join-section {
       background-color: rgba(255, 255, 255, 0.05);
       padding: 4rem 2rem;
       margin-top: 3rem;
@@ -88,14 +122,16 @@
     }
 
     .about-section h2,
-    .utility-section h2 {
+    .utility-section h2,
+    .join-section h2 {
       font-size: 2.2rem;
       margin-bottom: 1rem;
       color: #fff;
     }
 
     .about-section p,
-    .utility-section p {
+    .utility-section p,
+    .join-section p {
       font-size: 1.1rem;
       color: #ddd;
       max-width: 800px;
@@ -141,6 +177,33 @@
       color: #ccc;
     }
 
+    .join-section {
+      background: linear-gradient(135deg, #43002d, #0a0927);
+      color: #fff;
+    }
+
+    .join-section h2 {
+      font-size: 2.5rem;
+    }
+
+    .join-section p {
+      margin: 1rem auto 2rem;
+    }
+
+    .join-section a {
+      background: #ffcc00;
+      color: #000;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .join-section a:hover {
+      background: #e6b800;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -173,11 +236,12 @@
 
   <header>
     <h1>YamalCoin ⚽🚀</h1>
-    <nav>
+    <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+    <nav id="navbar">
       <a href="#welcome">Welcome</a>
       <a href="#about">About</a>
       <a href="#utility">Utility</a>
-      <a href="#tokenomics">Tokenomics</a>
+      <a href="#join">Join</a>
     </nav>
   </header>
 
@@ -223,6 +287,20 @@
       </div>
     </div>
   </section>
+
+  <!-- Join the Movement Section -->
+  <section id="join" class="section join-section">
+    <h2>Join the Movement 🌍</h2>
+    <p>Be part of the next wave of crypto culture. Get $YML, support the vision, and have fun doing it.</p>
+    <a href="#">Buy YamalCoin</a>
+  </section>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("navbar");
+      nav.classList.toggle("active");
+    }
+  </script>
 
  <!-- Tokenomics Section -->
 <section id="tokenomics" class="section tokenomics-section">
