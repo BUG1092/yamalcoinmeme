@@ -259,6 +259,11 @@
   text-align: center;
 }
 
+.join-btn-container {
+  margin-top: 2rem;
+  text-align: center;
+}
+
 .join-btn {
   display: inline-block;
   padding: 0.75rem 1.5rem;
@@ -270,11 +275,31 @@
   transition: background 0.3s ease;
   font-size: 1.1rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  position: relative;
+  z-index: 1;
 }
 
 .join-btn:hover {
   background: #e6b800;
 }
+
+/* Pulse animation */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(255, 204, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 204, 0, 0);
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
 
   </style>
 </head>
@@ -301,8 +326,9 @@
     <p>The future of meme coins is here. Inspired by greatness. Powered by community.</p> 
     <img src="d67fbce3-04d2-452a-bf98-6166715b6492.png" alt="Lamine Yamal" style="margin-top: 2rem; max-width: 650px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.5);" />
     <div class="join-btn-container">
-  <a href="#about" class="join-btn">Join Community 🚀</a>
+  <a href="https://t.me/YamalCoin" target="_blank" class="join-btn pulse">Join the Movement 🚀</a>
 </div>
+
   </section>
 
   <!-- Restul secțiunilor rămân neschimbate -->
