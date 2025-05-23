@@ -355,7 +355,7 @@
   100% {
     box-shadow: 0 0 0 0 rgba(255, 204, 0, 0);
   }
-}
+
 .pulse {
   animation: pulse 2s infinite;
 }
@@ -432,6 +432,17 @@ header.scrolled {
 
   </style>
 </head>
+  <script>
+  function toggleMenu() {
+    document.getElementById('nav').classList.toggle('active');
+  }
+
+  window.addEventListener('scroll', function() {
+    const header = document.querySelector('header');
+    header.classList.toggle('scrolled', window.scrollY > 50);
+  });
+</script>
+
 <body>
 
   <header>
