@@ -264,26 +264,83 @@
   text-align: center;
 }
 
-.join-btn {
-  display: inline-block;
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(90deg, #1d1f33 0%, #2a2b45 100%);
+  color: white;
+  padding: 4rem 2rem;
+  min-height: 100vh;
+  flex-wrap: wrap;
+}
+
+.hero-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.hero-text {
+  flex: 1;
+  max-width: 600px;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.hero-text .highlight {
+  color: #ffcc00;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #ccc;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
   padding: 0.75rem 1.5rem;
-  background: #ffcc00;
-  color: #1d1f33;
-  font-weight: bold;
   border-radius: 30px;
+  font-weight: bold;
   text-decoration: none;
   transition: background 0.3s ease;
-  font-size: 1.1rem;
+  font-size: 1rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-  position: relative;
-  z-index: 1;
 }
 
-.join-btn:hover {
-  background: #e6b800;
+.btn.buy {
+  background-color: #ffcc00;
+  color: #1d1f33;
 }
 
-/* Pulse animation */
+.btn.buy:hover {
+  background-color: #e6b800;
+}
+
+.btn.join {
+  background: transparent;
+  color: white;
+  border: 2px solid #ffcc00;
+}
+
+.btn.join:hover {
+  background: #ffcc00;
+  color: #1d1f33;
+}
+
+/* Pulse Animation */
 @keyframes pulse {
   0% {
     box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.6);
@@ -294,6 +351,34 @@
   100% {
     box-shadow: 0 0 0 0 rgba(255, 204, 0, 0);
   }
+}
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Image section */
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 500px;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(255, 204, 0, 0.3);
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Floating image effect */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
 }
 
 .pulse {
@@ -321,15 +406,24 @@
     </nav>
   </header>
 
-  <section id="welcome" class="section">
-    <h2>Welcome to $YML ⚽🚀</h2>
-    <p>The future of meme coins is here. Inspired by greatness. Powered by community.</p> 
-    <img src="d67fbce3-04d2-452a-bf98-6166715b6492.png" alt="Lamine Yamal" style="margin-top: 2rem; max-width: 650px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.5);" />
-    <div class="join-btn-container">
-  <a href="https://t.me/YamalCoin" target="_blank" class="join-btn pulse">Join the Movement 🚀</a>
-</div>
 
-  </section>
+  
+  <section id="welcome" class="hero-section">
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1><span class="highlight">$YML ⚽🚀</span><br>To the Moon and Beyond 🚀</h1>
+      <p>The ultimate meme coin inspired by young talent and Barça spirit. Join the revolution and be part of something legendary!</p>
+      <div class="hero-buttons">
+        <a href="#" class="btn buy">Buy YamalCoin</a>
+        <a href="https://t.me/YamalCoin" target="_blank" class="btn join pulse">Join Community</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="d67fbce3-04d2-452a-bf98-6166715b6492.png" alt="YamalCoin" class="floating-image" />
+    </div>
+  </div>
+</section>
+
 
   <!-- Restul secțiunilor rămân neschimbate -->
 
