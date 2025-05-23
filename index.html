@@ -487,20 +487,23 @@
   </footer>
   
   <script>
-    function toggleMenu() {
-      document.getElementById("nav").classList.toggle("active");
-    }
+  function toggleMenu() {
+    document.getElementById("nav").classList.toggle("active");
+  }
 
-    window.addEventListener('scroll', function () {
-      document.querySelectorAll('.about-section, .tokenomics, #roadmap, #contact').forEach(el => {
-        const pos = el.getBoundingClientRect().top;
-        const screenPos = window.innerHeight / 1.3;
-        if (pos < screenPos) {
-          el.style.opacity = 1;
-        }
-      });
+  window.addEventListener('scroll', function () {
+    const sections = document.querySelectorAll('.about-section, .tokenomics, #roadmap, #contact');
+    const triggerBottom = window.innerHeight * 0.85;
+
+    sections.forEach(section => {
+      const sectionTop = section.getBoundingClientRect().top;
+      if (sectionTop < triggerBottom) {
+        section.style.opacity = '1';
+      }
     });
-  </script>
+  });
+</script>
+
 
 </body>
 </html>
