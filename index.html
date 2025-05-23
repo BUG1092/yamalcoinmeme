@@ -2,14 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>YamalCoin | The Future of Meme Coins</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YamalCoin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
     * {
       margin: 0;
       padding: 0;
@@ -18,413 +14,136 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(to right, #1d1f33, #3c0f2d);
-      color: #fff;
-      line-height: 1.6;
+      background: linear-gradient(135deg, #1e1e3f, #6b1e3f);
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    header {
-      background: rgba(0, 0, 0, 0.8);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-    }
-
-    .logo {
+    .hero-section {
       display: flex;
       align-items: center;
-    }
-
-    .logo img {
-      height: 60px;
-      margin-right: 10px;
-      border-radius: 50%;
-    }
-
-    .logo h1 {
-      font-size: 1.8rem;
-      color: #ffcc00;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-    }
-
-    nav a {
-      margin-left: 1.5rem;
-      text-decoration: none;
-      color: #fff;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #ffcc00;
-    }
-
-    /* Responsive menu */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-
-    .menu-toggle div {
-      width: 25px;
-      height: 3px;
-      background: white;
-      margin: 4px 0;
-    }
-
-    @media (max-width: 768px) {
-      nav {
-        display: none;
-        flex-direction: column;
-        background-color: #000;
-        position: absolute;
-        top: 70px;
-        right: 0;
-        width: 200px;
-        padding: 1rem;
-      }
-
-      nav.active {
-        display: flex;
-      }
-
-      .menu-toggle {
-        display: flex;
-      }
-    }
-
-    .section {
-      padding: 100px 20px 80px;
-      text-align: center;
-    }
-
-    #welcome {
-      background: linear-gradient(to right, #1b0d3a, #62001a);
-      padding: 6rem 2rem;
-      animation: fadeIn 2s ease-in-out;
-    }
-
-    #welcome h2 {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-    }
-
-    #welcome p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto 2rem;
-    }
-
-    .join-btn {
-      display: inline-block;
-      margin-top: 2rem;
-      padding: 0.8rem 2rem;
-      background: #ffcc00;
-      color: #1d1f33;
-      font-weight: bold;
-      font-size: 1.1rem;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background 0.3s ease;
-    }
-
-    .join-btn:hover {
-      background: #e6b800;
-    }
-
-    .about-section, .tokenomics, #roadmap, #contact {
-      background-color: rgba(255, 255, 255, 0.05);
+      justify-content: center;
       padding: 4rem 2rem;
-      margin: 2rem auto;
-      border-radius: 12px;
-      max-width: 1000px;
-      animation: fadeInUp 1s ease forwards;
-      opacity: 0;
+      gap: 3rem;
+      max-width: 1200px;
+      margin: auto;
+      flex-wrap: wrap;
     }
 
-    .about-section h2,
-    .tokenomics h2,
-    #roadmap h2,
-    #contact h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #fff;
+    .hero-text {
+      flex: 1 1 40rem;
     }
 
-    .about-section p,
-    .tokenomics p,
-    #roadmap p,
-    #contact p {
-      font-size: 1.1rem;
-      color: #ddd;
-      max-width: 800px;
-      margin: 0 auto;
-      line-height: 1.6;
+    .hero-text h1 {
+      font-size: 3rem;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
     }
 
-    ul {
-      list-style: none;
-      padding: 0;
-      color: #ddd;
-    }
-
-    ul li {
-      margin-bottom: 0.8rem;
-    }
-
-    footer {
-      background: #111;
-      color: #aaa;
-      text-align: center;
-      padding: 1rem 0;
-      margin-top: 2rem;
-    }
-
-    .socials a {
-      color: #fdd835;
-      margin: 0 0.5rem;
-      text-decoration: none;
-    }
-
-    .socials a:hover {
-      text-decoration: underline;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInUp {
-      0% { transform: translateY(30px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
-    }
-
-    .tokenomics-section {
-      background: linear-gradient(to right, #1b0d3a, #62001a);
-      padding: 4rem 2rem;
-      color: #fff;
-      animation: fadeInUp 1.2s ease-out;
-    }
-
-    .tokenomics-section h2 {
-      font-size: 2.5rem;
+    .hero-text p {
+      font-size: 1.25rem;
       margin-bottom: 2rem;
-      color: #fdd835;
+      max-width: 40rem;
     }
 
-    .tokenomics-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-      max-width: 1000px;
-      margin: 0 auto;
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
-    .token-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 2rem;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-      transition: transform 0.3s ease;
-    }
-
-    .token-card:hover {
-      transform: translateY(-8px);
-    }
-
-    .token-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 0.8rem;
-      color: #ffd700;
-    }
-
-    .token-card p {
+    .hero-buttons a {
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
       font-size: 1rem;
-      color: #eee;
+      font-weight: 700;
+      transition: background 0.3s;
     }
-    .join-btn-container {
-  margin-top: 2rem;
-  text-align: center;
-}
 
-.join-btn-container {
-  margin-top: 2rem;
-  text-align: center;
-}
+    .btn-primary {
+      background-color: #6b1e3f;
+      color: white;
+      border: 2px solid #ffffff30;
+    }
 
-.hero-section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: linear-gradient(90deg, #1d1f33 0%, #2a2b45 100%);
-  color: white;
-  padding: 4rem 2rem;
-  min-height: 100vh;
-  flex-wrap: wrap;
-}
+    .btn-primary:hover {
+      background-color: #8c2c58;
+    }
 
-.hero-content {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
+    .btn-secondary {
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+    }
 
-.hero-text {
-  flex: 1;
-  max-width: 600px;
-}
+    .btn-secondary:hover {
+      background-color: white;
+      color: #6b1e3f;
+    }
 
-.hero-text h1 {
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-}
+    .hero-image {
+      flex: 1 1 30rem;
+      text-align: center;
+    }
 
-.hero-text .highlight {
-  color: #ffcc00;
-}
-
-.hero-text p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  color: #ccc;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.btn {
-  padding: 0.75rem 1.5rem;
-  border-radius: 30px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: background 0.3s ease;
-  font-size: 1rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-}
-
-.btn.buy {
-  background-color: #ffcc00;
-  color: #1d1f33;
-  transition: all 0.3s ease;
-}
-
-.btn.buy:hover {
-  background-color: #ffd700;
-  transform: scale(1.05);
-  box-shadow: 0 0 15px #ffcc00, 0 0 30px #ffcc00;
-}
-
-
-.btn.join {
-  background: transparent;
-  color: white;
-  border: 2px solid #ffcc00;
-}
-
-.btn.join:hover {
-  background: #ffcc00;
-  color: #1d1f33;
-}
-
-/* Pulse Animation */
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.6);
-  }
-  70% {
-    box-shadow: 0 0 0 20px rgba(255, 204, 0, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(255, 204, 0, 0);
-  }
-}
-.pulse {
-  animation: pulse 2s infinite;
-}
-
-/* Image section */
-.hero-image {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 100%;
-}
-
-.hero-image img {
-  width: 100%;
-  max-width: 100%;
-  border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(255, 204, 0, 0.3);
-  animation: float 6s ease-in-out infinite;
-}
-
-/* Floating image effect */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-}
-
-}
-
-.pulse {
-  animation: pulse 2s infinite;
-}
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 2rem;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+    }
 
     @media (max-width: 768px) {
-  .hero-section {
-    flex-direction: column;
-    padding: 2rem 1rem;
-    text-align: center;
-  }
+      .hero-section {
+        flex-direction: column;
+        padding: 2rem 1rem;
+        text-align: center;
+      }
 
-  .hero-text, .hero-image {
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
+      .hero-text h1 {
+        font-size: 2.2rem;
+      }
 
-  .hero-text h1 {
-    font-size: 2rem;
-  }
+      .hero-text p {
+        font-size: 1rem;
+      }
 
-  .hero-text p {
-    font-size: 1rem;
-  }
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
 
-  .hero-buttons {
-    flex-direction: column;
-    gap: 1rem;
-  }
+      .hero-buttons a {
+        width: 80%;
+        text-align: center;
+      }
 
-  .hero-image img {
-    max-width: 100%;
-    margin: 0 auto;
-  }
-}
-
-
-
+      .hero-image img {
+        max-width: 80%;
+        margin: 0 auto;
+      }
+    }
   </style>
 </head>
 <body>
+  <section class="hero-section">
+    <div class="hero-text">
+      <h1>Welcome to YamalCoin</h1>
+      <p>The ultimate meme coin inspired by Lamine Yamal. Powered by the spirit of Barça and backed by the community. Buy now and join the revolution!</p>
+      <div class="hero-buttons">
+        <a href="#buy" class="btn-primary">Buy YamalCoin</a>
+        <a href="#whitepaper" class="btn-secondary">Read Whitepaper</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="https://raw.githubusercontent.com/bug1092/yamalcoinmeme/main/assets/yamalcoin-hero.png" alt="YamalCoin Mascot" />
+    </div>
+  </section>
+</body>
+</html>
+
 
   <header>
     <div class="logo">
