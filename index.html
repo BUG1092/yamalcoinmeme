@@ -311,19 +311,21 @@
 }
 
 .btn {
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 2rem;
   border-radius: 30px;
   font-weight: bold;
   text-decoration: none;
-  transition: background 0.3s ease;
-  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  display: inline-block; /* Asigură-te că se aplică dimensiunile corect */
 }
 
 .btn.buy {
   background-color: #ffcc00;
   color: #1d1f33;
-  transition: all 0.3s ease;
+  padding: 1.2rem 2.2rem; /* Mai mare decât celelalte butoane */
+  font-size: 1.2rem;
 }
 
 .btn.buy:hover {
@@ -332,16 +334,18 @@
   box-shadow: 0 0 15px #ffcc00, 0 0 30px #ffcc00;
 }
 
-
 .btn.join {
   background: transparent;
   color: white;
   border: 2px solid #ffcc00;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
 }
 
 .btn.join:hover {
   background: #ffcc00;
   color: #1d1f33;
+  transform: scale(1.05);
 }
 
 /* Pulse Animation */
