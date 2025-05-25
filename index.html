@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>YamalCoin | The Future of Meme Coins</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
     html {
       scroll-behavior: smooth;
@@ -33,6 +33,11 @@
       top: 0;
       z-index: 10;
       box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      transition: background-color 0.3s ease;
+    }
+
+    header.scrolled {
+      background-color: rgba(0, 0, 0, 0.9);
     }
 
     .logo {
@@ -49,6 +54,7 @@
     .logo h1 {
       font-size: 1.8rem;
       color: #ffcc00;
+      font-family: 'Poppins', sans-serif;
     }
 
     nav {
@@ -61,11 +67,13 @@
       text-decoration: none;
       color: #fff;
       font-weight: 600;
-      transition: color 0.3s;
+      transition: all 0.3s;
+      font-family: 'Poppins', sans-serif;
     }
 
     nav a:hover {
       color: #ffcc00;
+      transform: translateY(-2px);
     }
 
     /* Responsive menu */
@@ -80,6 +88,7 @@
       height: 3px;
       background: white;
       margin: 4px 0;
+      transition: all 0.3s;
     }
 
     @media (max-width: 768px) {
@@ -101,103 +110,456 @@
       .menu-toggle {
         display: flex;
       }
+
+      .menu-toggle.active div:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      .menu-toggle.active div:nth-child(2) {
+        opacity: 0;
+      }
+      .menu-toggle.active div:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
     }
 
     .section {
-      padding: 100px 20px 80px;
+      padding: 100px 20px;
       text-align: center;
     }
 
-    #welcome {
-     background: linear-gradient(to right, #1b0d3a, #62001a);
-      padding: 4rem 2rem;
-      color: #fff;
-      animation: fadeInUp 1.2s ease-out;
+    /* Hero Section */
+    .hero-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(90deg, #1d1f33 0%, #2a2b45 100%);
+      color: white;
+      padding: 6rem 2rem;
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
     }
 
-    #welcome h2 {
-      font-size: 4rem;
-      margin-bottom: 1rem;
+    .hero-content {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 3rem;
+      align-items: center;
+      z-index: 2;
     }
 
-    #welcome p {
+    .hero-text {
+      flex: 1;
+      text-align: left;
+    }
+
+    .hero-text h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(45deg, #ffcc00, #ff8c00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text .highlight {
+      color: #ffcc00;
+    }
+
+    .hero-text p {
+      font-size: 1.3rem;
+      margin-bottom: 2.5rem;
+      color: #ddd;
+      max-width: 600px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 1.2rem 2.5rem;
+      border-radius: 50px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
       font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      display: inline-block;
+      font-family: 'Poppins', sans-serif;
     }
 
-    .join-btn {
-      display: inline-block;
-      margin-top: 2rem;
-      padding: 0.8rem 2rem;
+    .btn.buy {
+      background-color: #ffcc00;
+      color: #1d1f33;
+      font-weight: 700;
+      border: 2px solid #ffcc00;
+    }
+
+    .btn.buy:hover {
+      background-color: #ffd700;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 25px rgba(255, 204, 0, 0.5);
+    }
+
+    .btn.join {
+      background: rgba(0, 0, 0, 0.4);
+      color: white;
+      border: 2px solid #ffcc00;
+      backdrop-filter: blur(5px);
+    }
+
+    .btn.join:hover {
       background: #ffcc00;
       color: #1d1f33;
-      font-weight: bold;
-      font-size: 1.1rem;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background 0.3s ease;
+      transform: translateY(-3px);
     }
 
-    .join-btn:hover {
-      background: #e6b800;
+    /* Pulse Animation */
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.6);
+      }
+      70% {
+        box-shadow: 0 0 0 20px rgba(255, 204, 0, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 204, 0, 0);
+      }
+    }
+    .pulse {
+      animation: pulse 2s infinite;
     }
 
-    .about-section, .tokenomics, #roadmap, #contact {
-     background: linear-gradient(to right, #1b0d3a, #62001a);
-      padding: 4rem 2rem;
+    /* Image section */
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(255, 204, 0, 0.3);
+      animation: float 6s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    /* Floating image effect */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* About Section */
+    .about-section {
+      background: linear-gradient(to right, rgba(27, 13, 58, 0.8), rgba(98, 0, 26, 0.8));
+      padding: 6rem 2rem;
       color: #fff;
-      animation: fadeInUp 1.2s ease-out;
+      position: relative;
+      backdrop-filter: blur(5px);
     }
 
-    .about-section h2,
-    .tokenomics h2,
-    #roadmap h2,
-    #contact h2 {
-      font-size: 2rem;
+    .about-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('d67fbce3-04d2-452a-bf98-6166715b6492.png') center/cover no-repeat;
+      opacity: 0.1;
+      z-index: -1;
+    }
+
+    .about-section h2 {
+      font-size: 2.8rem;
+      margin-bottom: 3rem;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(45deg, #ffcc00, #ff8c00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      display: inline-block;
+    }
+
+    .about-section h2::after {
+      content: '⚽';
+      position: absolute;
+      right: -40px;
+      top: -10px;
+      font-size: 1.5rem;
+      animation: spin 4s linear infinite;
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .about-text {
+      flex: 1 1 600px;
+      text-align: left;
+      font-size: 1.2rem;
+      color: #eee;
+      line-height: 1.8;
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 20px;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 204, 0, 0.2);
+      transition: transform 0.3s;
+    }
+
+    .about-text:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(255, 204, 0, 0.1);
+    }
+
+    .about-text strong {
+      color: #ffcc00;
+      font-weight: 600;
+    }
+
+    .about-image {
+      flex: 1 1 400px;
+      max-width: 500px;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    /* Tokenomics Section */
+    .tokenomics-section {
+      background: linear-gradient(to right, rgba(27, 13, 58, 0.9), rgba(98, 0, 26, 0.9));
+      padding: 6rem 2rem;
+      color: #fff;
+      position: relative;
+    }
+
+    .tokenomics-section h2 {
+      font-size: 2.8rem;
+      margin-bottom: 3rem;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(45deg, #ffcc00, #ff8c00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .tokenomics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .token-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 204, 0, 0.2);
+      padding: 2.5rem 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+
+    .token-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(255, 204, 0, 0.2);
+      border-color: rgba(255, 204, 0, 0.4);
+    }
+
+    .token-card h3 {
+      font-size: 1.5rem;
       margin-bottom: 1rem;
-      color: #fff;
+      color: #ffd700;
+      font-family: 'Poppins', sans-serif;
     }
 
-    .about-section p,
-    .tokenomics p,
-    #roadmap p,
-    #contact p {
+    .token-card p {
       font-size: 1.1rem;
-      color: #ddd;
+      color: #eee;
+    }
+
+    /* Roadmap Section */
+    #roadmap {
+      background: linear-gradient(to right, rgba(29, 31, 51, 0.9), rgba(60, 15, 45, 0.9));
+      padding: 6rem 2rem;
+      position: relative;
+    }
+
+    #roadmap h2 {
+      font-size: 2.8rem;
+      margin-bottom: 3rem;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(45deg, #ffcc00, #ff8c00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .roadmap-container {
       max-width: 800px;
       margin: 0 auto;
-      line-height: 1.6;
+      position: relative;
     }
 
-    ul {
-      list-style: none;
-      padding: 0;
-      color: #ddd;
+    .roadmap-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, #ffcc00, #ff0066);
     }
 
-    ul li {
-      margin-bottom: 0.8rem;
+    .roadmap-item {
+      position: relative;
+      margin-bottom: 3rem;
+      width: calc(50% - 40px);
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 204, 0, 0.2);
+      transition: all 0.3s;
     }
 
+    .roadmap-item:nth-child(odd) {
+      margin-left: auto;
+      text-align: right;
+    }
+
+    .roadmap-item:nth-child(even) {
+      margin-right: auto;
+      text-align: left;
+    }
+
+    .roadmap-item::before {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #ffcc00;
+      top: 30px;
+    }
+
+    .roadmap-item:nth-child(odd)::before {
+      left: -50px;
+    }
+
+    .roadmap-item:nth-child(even)::before {
+      right: -50px;
+    }
+
+    .roadmap-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(255, 204, 0, 0.2);
+    }
+
+    .roadmap-item strong {
+      color: #ffcc00;
+      font-size: 1.3rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Contact Section */
+    #contact {
+      background: linear-gradient(to right, rgba(27, 13, 58, 0.9), rgba(98, 0, 26, 0.9));
+      padding: 6rem 2rem;
+      position: relative;
+    }
+
+    #contact h2 {
+      font-size: 2.8rem;
+      margin-bottom: 3rem;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(45deg, #ffcc00, #ff8c00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .contact-content {
+      max-width: 600px;
+      margin: 0 auto;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 3rem;
+      border-radius: 20px;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 204, 0, 0.2);
+    }
+
+    .contact-content p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .socials a {
+      color: #ffcc00;
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: all 0.3s;
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      border: 2px solid #ffcc00;
+      border-radius: 50px;
+    }
+
+    .socials a:hover {
+      background: #ffcc00;
+      color: #1d1f33;
+      transform: translateY(-5px);
+    }
+
+    /* Footer */
     footer {
       background: #111;
       color: #aaa;
       text-align: center;
-      padding: 1rem 0;
-      margin-top: 2rem;
+      padding: 2rem 0;
+      position: relative;
     }
 
-    .socials a {
-      color: #fdd835;
-      margin: 0 0.5rem;
-      text-decoration: none;
+    footer p {
+      max-width: 800px;
+      margin: 0 auto 1rem;
     }
 
-    .socials a:hover {
-      text-decoration: underline;
-    }
-
+    /* Animations */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -208,281 +570,62 @@
       100% { transform: translateY(0); opacity: 1; }
     }
 
-    .tokenomics-section {
-      background: linear-gradient(to right, #1b0d3a, #62001a);
-      padding: 4rem 2rem;
-      color: #fff;
-      animation: fadeInUp 1.2s ease-out;
-    }
-
-    .tokenomics-section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      color: #fdd835;
-    }
-
-    .tokenomics-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .token-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 2rem;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-      transition: transform 0.3s ease;
-    }
-
-    .token-card:hover {
-      transform: translateY(-8px);
-    }
-
-    .token-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 0.8rem;
-      color: #ffd700;
-    }
-
-    .token-card p {
-      font-size: 1rem;
-      color: #eee;
-    }
-    .join-btn-container {
-  margin-top: 2rem;
-  text-align: center;
-}
-
-.join-btn-container {
-  margin-top: 2rem;
-  text-align: center;
-}
-
-.hero-section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: linear-gradient(90deg, #1d1f33 0%, #2a2b45 100%);
-  color: white;
-  padding: 4rem 2rem;
-  min-height: 100vh;
-  flex-wrap: wrap;
-}
-
-.hero-content {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.hero-text {
-  flex: 1;
-  max-width: 600px;
-}
-
-.hero-text h1 {
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-}
-
-.hero-text .highlight {
-  color: #ffcc00;
-}
-
-.hero-text p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  color: #ccc;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.btn {
-  padding: 1rem 2rem;
-  border-radius: 30px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  font-size: 1.1rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-  display: inline-block; /* Asigură-te că se aplică dimensiunile corect */
-}
-
-.btn.buy {
-  background-color: #ffcc00;
-  color: #1d1f33;
-  padding: 1.2rem 2.2rem; /* Mai mare decât celelalte butoane */
-  font-size: 1.2rem;
-}
-
-.btn.buy:hover {
-  background-color: #ffd700;
-  transform: scale(1.05);
-  box-shadow: 0 0 15px #ffcc00, 0 0 30px #ffcc00;
-}
-
-.btn.join {
-  background: transparent;
-  color: white;
-  border: 2px solid #ffcc00;
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-}
-
-.btn.join:hover {
-  background: #ffcc00;
-  color: #1d1f33;
-  transform: scale(1.05);
-}
-
-/* Pulse Animation */
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.6);
-  }
-  70% {
-    box-shadow: 0 0 0 20px rgba(255, 204, 0, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(255, 204, 0, 0);
-  }
-}
-.pulse {
-  animation: pulse 2s infinite;
-}
-
-/* Image section */
-.hero-image {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 100%;
-}
-
-.hero-image img {
-  width: 85%;
-  max-width: 85%;
-  border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(255, 204, 0, 0.3);
-  animation: float 6s ease-in-out infinite;
-}
-
-/* Floating image effect */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-}
-
-}
-
-.pulse {
-  animation: pulse 2s infinite;
-}
-
+    /* Responsive Styles */
     @media (max-width: 768px) {
-  .hero-section {
-    flex-direction: column;
-    padding: 2rem 1rem;
-    text-align: center;
-  }
+      .hero-section {
+        padding: 4rem 1rem;
+        text-align: center;
+      }
 
-  .hero-text, .hero-image {
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
+      .hero-content {
+        flex-direction: column;
+      }
 
-  .hero-text h1 {
-    font-size: 2rem;
-  }
+      .hero-text {
+        text-align: center;
+      }
 
-  .hero-text p {
-    font-size: 1rem;
-  }
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
 
-  .hero-buttons {
-    flex-direction: column;
-    gap: 1rem;
-  }
+      .hero-text p {
+        font-size: 1.1rem;
+        margin: 0 auto 2rem;
+      }
 
-  .hero-image img {
-    max-width: 100%;
-    margin: 0 auto;
-  }
-}
+      .hero-buttons {
+        justify-content: center;
+      }
 
-    header {
-  transition: background-color 0.3s ease;
-  background-color: rgba(0, 0, 0, 0.2); /* inițial transparent */
-}
+      .about-content {
+        flex-direction: column;
+      }
 
-header.scrolled {
-  background-color: rgba(0, 0, 0, 0.8); /* mai închis la scroll */
-}
+      .about-text {
+        text-align: center;
+        padding: 1.5rem;
+      }
 
-    .about-section {
-  background: linear-gradient(to right, #1b0d3a, #62001a);
-      padding: 4rem 2rem;
-      color: #fff;
-      animation: fadeInUp 1.2s ease-out;
-}
+      .roadmap-container::before {
+        left: 20px;
+      }
 
-.about-section h2 {
-  font-size: 2.5rem;
-  color: #ffcc00;
-  margin-bottom: 2rem;
-  text-align: center;
-}
+      .roadmap-item {
+        width: calc(100% - 40px);
+        text-align: left !important;
+      }
 
-.about-content {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  max-width: 1000px;
-  margin: 0 auto;
-}
+      .roadmap-item:nth-child(odd)::before,
+      .roadmap-item:nth-child(even)::before {
+        left: -30px;
+        right: auto;
+      }
 
-.about-text {
-  flex: 1 1 55%;
-  font-size: 1.1rem;
-  color: #ddd;
-  line-height: 1.8;
-}
-
-.about-text strong {
-  color: #ffcc00;
-}
-
-
-
-
-@media (max-width: 768px) {
-  .about-content {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .about-text {
-    font-size: 1rem;
-  }
-}
-
-
-
-
+      .contact-content {
+        padding: 2rem 1.5rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -497,141 +640,146 @@ header.scrolled {
     </div>
     <nav id="nav">
       <a href="#welcome">Home</a>
+      <a href="#about">About</a>
       <a href="#tokenomics">Tokenomics</a>
       <a href="#roadmap">Roadmap</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
-
-  
   <section id="welcome" class="hero-section">
-  <div class="hero-content">
-    <div class="hero-text">
-      <h1><span class="highlight">YamalCoin ⚽🚀</span><br>To the Moon and Beyond 🚀</h1>
-      <p>The ultimate meme coin inspired by young talent and Barça spirit. Join the revolution and be part of something legendary!</p>
-      <div class="hero-buttons">
-        <a href="https://pancakeswap.finance/swap?outputCurrency=0xab5E53782Ab2362c9e97C53Ce25db48E81d38e05" target="_blank" class="btn buy">Buy $YML</a>
-        <a href="https://t.me/YamalCoin" target="_blank" class="btn join pulse">Join Community</a>
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1><span class="highlight">YamalCoin ⚽🚀</span><br>To the Moon and Beyond 🚀</h1>
+        <p>The ultimate meme coin inspired by young talent and Barça spirit. Join the revolution and be part of something legendary!</p>
+        <div class="hero-buttons">
+          <a href="https://pancakeswap.finance/swap?outputCurrency=0xab5E53782Ab2362c9e97C53Ce25db48E81d38e05" target="_blank" class="btn buy">Buy $YML</a>
+          <a href="https://t.me/YamalCoin" target="_blank" class="btn join pulse">Join Community</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="d67fbce3-04d2-452a-bf98-6166715b6492.png" alt="YamalCoin" class="floating-image" />
       </div>
     </div>
-    <div class="hero-image">
-      <img src="d67fbce3-04d2-452a-bf98-6166715b6492.png" alt="YamalCoin" class="floating-image" />
-    </div>
-  </div>
-</section>
+  </section>
 
-
-  <!-- Restul secțiunilor rămân neschimbate -->
-
-   
-
-<section id="about" class="section about-section">
-  <h2>About YamalCoin</h2>
-  <div class="about-content">
-    <div class="about-text">
-      <p>
-        <strong>YamalCoin ($YML)</strong> is more than a meme — it's a movement.
-        Inspired by the brilliance of <strong>Lamine Yamal</strong> and powered by the unstoppable energy of the crypto community,
-        YamalCoin brings the passion of football and the fun of meme culture to the blockchain.
-      </p>
-      <p>
-        Built on <strong>BNB Smart Chain</strong>, YamalCoin offers low fees, high speed, and a vibrant ecosystem fueled by community spirit.
-        Whether you're a die-hard Barça fan or a crypto enthusiast, YamalCoin is your chance to score big.
-      </p>
+  <section id="about" class="about-section">
+    <h2>About YamalCoin</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <p>
+          <strong>YamalCoin ($YML)</strong> is more than a meme — it's a movement.
+          Inspired by the brilliance of <strong>Lamine Yamal</strong> and powered by the unstoppable energy of the crypto community,
+          YamalCoin brings the passion of football and the fun of meme culture to the blockchain.
+        </p>
+        <p>
+          Built on <strong>BNB Smart Chain</strong>, YamalCoin offers low fees, high speed, and a vibrant ecosystem fueled by community spirit.
+          Whether you're a die-hard Barça fan or a crypto enthusiast, YamalCoin is your chance to score big.
+        </p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-
-   <!-- Tokenomics Section -->
-<section id="tokenomics" class="section tokenomics-section">
-  <h2>Tokenomics</h2>
-  <p>$YML is designed with a sustainable tokenomics model to ensure long-term growth and stability.</p>
-  
-  <div class="tokenomics-grid">
-    <div class="token-card">
-      <h3>Total Supply</h3>
-      <p>1,000,000,000 YML</p>
+  <section id="tokenomics" class="tokenomics-section">
+    <h2>Tokenomics</h2>
+    <p>$YML is designed with a sustainable tokenomics model to ensure long-term growth and stability.</p>
+    
+    <div class="tokenomics-grid">
+      <div class="token-card">
+        <h3>Total Supply</h3>
+        <p>1,000,000,000 YML</p>
+      </div>
+      <div class="token-card">
+        <h3>Burn Tax 🔥</h3>
+        <p>1% of every transaction is burned forever</p>
+      </div>
+      <div class="token-card">
+        <h3>Marketing Tax 📢</h3>
+        <p>1% goes to spreading the YamalCoin message</p>
+      </div>
+      <div class="token-card">
+        <h3>Reflection Tax 💸</h3>
+        <p>1% redistributed to all holders automatically</p>
+      </div>
     </div>
-    <div class="token-card">
-      <h3>Burn Tax 🔥</h3>
-      <p>1% of every transaction is burned forever</p>
-    </div>
-    <div class="token-card">
-      <h3>Marketing Tax 📢</h3>
-      <p>1% goes to spreading the YamalCoin message</p>
-    </div>
-    <div class="token-card">
-      <h3>Reflection Tax 💸</h3>
-      <p>1% redistributed to all holders automatically</p>
-    </div>
-  </div>
-</section>
+  </section>
 
   <section id="roadmap" class="section">
     <h2>Roadmap</h2>
-    <ul>
-      <li><strong>Q2 2025</strong> – Token Launch, Website Live, Community Growth</li>
-      <li><strong>Q3 2025</strong> – Listings on CoinGecko & CoinMarketCap</li>
-      <li><strong>Q4 2025</strong> – NFT Collection, Partnerships</li>
-      <li><strong>2026</strong> – GameFi Utility, CEX Listing</li>
-    </ul>
-    <p>✅ Token Creation<br>✅ Website Launch<br>🚀 Social Media Pages<br>📈 Listings (DEXTools, CoinGecko, CoinMarketCap)<br>🌍 Community Expansion</p>
+    <div class="roadmap-container">
+      <div class="roadmap-item">
+        <strong>Q2 2025</strong>
+        <p>Token Launch, Website Live, Community Growth</p>
+      </div>
+      <div class="roadmap-item">
+        <strong>Q3 2025</strong>
+        <p>Listings on CoinGecko & CoinMarketCap</p>
+      </div>
+      <div class="roadmap-item">
+        <strong>Q4 2025</strong>
+        <p>NFT Collection, Partnerships</p>
+      </div>
+      <div class="roadmap-item">
+        <strong>2026</strong>
+        <p>GameFi Utility, CEX Listing</p>
+      </div>
+    </div>
   </section>
 
   <section id="contact" class="section">
     <h2>Contact & Social Media</h2>
-    <p>Email: team@yamalcoin.io</p>
-    <div class="socials">
-      <a href="https://t.me/YamalCoin" target="_blank">Telegram</a> |
-      <a href="https://twitter.com/YamalCoin" target="_blank">Twitter</a>
+    <div class="contact-content">
+      <p>Email: team@yamalcoin.io</p>
+      <div class="socials">
+        <a href="https://t.me/YamalCoin" target="_blank">Telegram</a>
+        <a href="https://twitter.com/YamalCoin" target="_blank">Twitter</a>
+      </div>
     </div>
   </section>
 
-   <footer>
+  <footer>
     <p>&copy; 2025 YamalCoin. All rights reserved.</p>
     <p>Cryptocurrency investments are subject to high market risk. YamalCoin is not responsible for your trading losses.</p>
   </footer>
   
   <script>
-  function toggleMenu() {
-    document.getElementById("nav").classList.toggle("active");
-  }
+    function toggleMenu() {
+      const nav = document.getElementById("nav");
+      const menuToggle = document.querySelector(".menu-toggle");
+      nav.classList.toggle("active");
+      menuToggle.classList.toggle("active");
+    }
 
-  window.addEventListener('scroll', function () {
-    const sections = document.querySelectorAll('.about-section, .tokenomics, #roadmap, #contact');
-    const triggerBottom = window.innerHeight * 0.85;
-
-    sections.forEach(section => {
-      const sectionTop = section.getBoundingClientRect().top;
-      if (sectionTop < triggerBottom) {
-        section.style.opacity = '1';
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector("header");
+      if (window.scrollY > 100) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
       }
+
+      // Animate sections on scroll
+      const sections = document.querySelectorAll('.section, .about-section, .tokenomics-section');
+      const triggerBottom = window.innerHeight * 0.85;
+
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if (sectionTop < triggerBottom) {
+          section.style.opacity = '1';
+          section.style.transform = 'translateY(0)';
+        }
+      });
     });
-  });
-</script>
 
-    <script>
-  window.addEventListener("scroll", function() {
-    var header = document.querySelector("header");
-    if (window.scrollY > 100) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
-  });
-</script>  <script>
-  window.addEventListener("scroll", function() {
-    var header = document.querySelector("header");
-    if (window.scrollY > 100) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
-  });
-</script>
-
-
+    // Initialize sections with hidden state
+    document.addEventListener('DOMContentLoaded', function() {
+      const sections = document.querySelectorAll('.section, .about-section, .tokenomics-section');
+      sections.forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(30px)';
+        section.style.transition = 'all 0.8s ease';
+      });
+    });
+  </script>
 </body>
 </html>
