@@ -356,7 +356,6 @@
     box-shadow: 0 0 0 0 rgba(255, 204, 0, 0);
   }
 }
-
 .pulse {
   animation: pulse 2s infinite;
 }
@@ -421,7 +420,7 @@
   }
 }
 
-header {
+    header {
   transition: background-color 0.3s ease;
   background-color: rgba(0, 0, 0, 0.2); /* inițial transparent */
 }
@@ -429,6 +428,7 @@ header {
 header.scrolled {
   background-color: rgba(0, 0, 0, 0.8); /* mai închis la scroll */
 }
+
 
 
   </style>
@@ -464,7 +464,7 @@ header.scrolled {
       </div>
     </div>
     <div class="hero-image">
-      <img src="0e20fee1-8619-4aee-9e65-5d7283dc328c.png" alt="YamalCoin" class="floating-image" />
+      <img src="d67fbce3-04d2-452a-bf98-6166715b6492.png" alt="YamalCoin" class="floating-image" />
     </div>
   </div>
 </section>
@@ -549,7 +549,16 @@ header.scrolled {
   });
 </script>
 
-  <script>
+    <script>
+  window.addEventListener("scroll", function() {
+    var header = document.querySelector("header");
+    if (window.scrollY > 100) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  });
+</script>  <script>
   window.addEventListener("scroll", function() {
     var header = document.querySelector("header");
     if (window.scrollY > 100) {
