@@ -433,6 +433,67 @@ header.scrolled {
   background-color: rgba(0, 0, 0, 0.8); /* mai închis la scroll */
 }
 
+    .about-section {
+  background: linear-gradient(to right, #1d1f33, #3c0f2d);
+  color: #fff;
+  padding: 4rem 2rem;
+  animation: fadeInUp 1.2s ease-out;
+}
+
+.about-section h2 {
+  font-size: 2.5rem;
+  color: #ffcc00;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.about-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.about-text {
+  flex: 1 1 55%;
+  font-size: 1.1rem;
+  color: #ddd;
+  line-height: 1.8;
+}
+
+.about-text strong {
+  color: #ffcc00;
+}
+
+.about-image {
+  flex: 1 1 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-image img {
+  max-width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(255, 204, 0, 0.3);
+  animation: float 6s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-text {
+    font-size: 1rem;
+  }
+}
+
+
 
 
   </style>
@@ -480,55 +541,26 @@ header.scrolled {
     <h1>About YamalCoin</h1>
   </header>
 
-  <section>
-    <h2>What is YamalCoin?</h2>
-    <p class="mission">
-      YamalCoin is a community-driven meme cryptocurrency inspired by young potential and fueled by the passion of fans. Built on the BNB Smart Chain, it's designed to be fast, fun, and frictionless.
-    </p>
-  </section>
-
-  <section>
-    <h2>Our Mission</h2>
-    <p class="mission">
-      We aim to create a fun and rewarding ecosystem where every holder benefits. Whether you're here to support a cultural moment, trade meme assets, or join a strong community – YamalCoin welcomes you.
-    </p>
-  </section>
-
-  <section>
-    <h2>Why YamalCoin?</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Low Fees</h3>
-        <p>1% burn, 1% marketing, 1% reflections – that's it. Simplicity meets efficiency.</p>
-      </div>
-      <div class="card">
-        <h3>Community First</h3>
-        <p>Decentralized and meme-powered. Our roadmap is guided by you.</p>
-      </div>
-      <div class="card">
-        <h3>Barça Colors</h3>
-        <p>Styled in the spirit of greatness – bold, unique, unforgettable.</p>
-      </div>
+<section id="about" class="section about-section">
+  <h2>About YamalCoin</h2>
+  <div class="about-content">
+    <div class="about-text">
+      <p>
+        <strong>YamalCoin ($YML)</strong> is more than a meme — it's a movement.
+        Inspired by the brilliance of <strong>Lamine Yamal</strong> and powered by the unstoppable energy of the crypto community,
+        YamalCoin brings the passion of football and the fun of meme culture to the blockchain.
+      </p>
+      <p>
+        Built on <strong>BNB Smart Chain</strong>, YamalCoin offers low fees, high speed, and a vibrant ecosystem fueled by community spirit.
+        Whether you're a die-hard Barça fan or a crypto enthusiast, YamalCoin is your chance to score big.
+      </p>
     </div>
-  </section>
+    <div class="about-image">
+      <img src="d67fbce3-04d2-452a-bf98-6166715b6492.png" alt="About YamalCoin">
+    </div>
+  </div>
+</section>
 
-  <section>
-    <h2>Meet the Meme</h2>
-    <p class="inspiration">
-      Inspired by unstoppable talent and viral energy, YamalCoin captures the essence of emerging greatness. More than a coin – it’s a movement born from football fandom and crypto culture colliding.
-    </p>
-  </section>
-
-  <section>
-    <h2>Backed by the Community</h2>
-    <p class="mission">
-      YamalCoin thrives on meme energy and grassroots enthusiasm. We’re not just investors – we’re believers, supporters, and part of a global culture. Together, we move.
-    </p>
-  </section>
-
-  <footer>
-    &copy; 2025 YamalCoin. All rights reserved.
-  </footer>
 
    <!-- Tokenomics Section -->
 <section id="tokenomics" class="section tokenomics-section">
