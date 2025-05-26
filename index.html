@@ -518,102 +518,89 @@ header.scrolled {
 }
 
     /* Roadmap Section */
-   /* Roadmap Section - Versiune optimizată pentru mobile */
-#roadmap {
-  background: linear-gradient(to right, #1b0d3a, #62001a);
-  padding: 3rem 1rem;
-}
+    #roadmap {
+      background: linear-gradient(to right, #1b0d3a, #62001a);
+      padding: 6rem 2rem;
+      position: relative;
+    }
 
-.roadmap-container {
-  max-width: 100%;
-  position: relative;
-  padding-left: 30px;
-}
+    #roadmap h2 {
+      font-size: 2.8rem;
+      margin-bottom: 3rem;
+      font-family: 'Poppins', sans-serif;
+      background: #fdd835;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-.roadmap-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 15px;
-  width: 3px;
-  height: 100%;
-  background: linear-gradient(to bottom, #ffcc00, #ff0066);
-}
+    .roadmap-container {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
 
-.roadmap-item {
-  position: relative;
-  margin-bottom: 2rem;
-  padding: 1.5rem;
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 12px;
-  border-left: 3px solid #ffcc00;
-}
+    .roadmap-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to right, #1b0d3a, #62001a);
+    }
 
-.roadmap-item::before {
-  content: '';
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: #ffcc00;
-  left: -8px;
-  top: 25px;
-}
+    .roadmap-item {
+      position: relative;
+      margin-bottom: 3rem;
+      width: calc(50% - 40px);
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 204, 0, 0.2);
+      transition: all 0.3s;
+    }
 
-.roadmap-item strong {
-  color: #ffcc00;
-  font-size: 1.1rem;
-  display: block;
-  margin-bottom: 0.5rem;
-}
+    .roadmap-item:nth-child(odd) {
+      margin-left: auto;
+      text-align: left;
+    }
 
-.roadmap-item p {
-  margin: 0.5rem 0;
-  font-size: 0.95rem;
-}
+    .roadmap-item:nth-child(even) {
+      margin-right: auto;
+      text-align: left;
+    }
 
-/* Desktop - păstrează layout-ul original */
-@media (min-width: 769px) {
-  #roadmap {
-    padding: 6rem 2rem;
-  }
-  
-  .roadmap-container {
-    max-width: 800px;
-    padding-left: 0;
-  }
-  
-  .roadmap-container::before {
-    left: 50%;
-    transform: translateX(-50%);
-    width: 4px;
-  }
-  
-  .roadmap-item {
-    width: calc(50% - 40px);
-    padding: 2rem;
-  }
-  
-  .roadmap-item:nth-child(odd) {
-    margin-left: auto;
-    text-align: left;
-  }
-  
-  .roadmap-item:nth-child(even) {
-    margin-right: auto;
-    text-align: left;
-  }
-  
-  .roadmap-item:nth-child(odd)::before {
-    left: -50px;
-  }
-  
-  .roadmap-item:nth-child(even)::before {
-    right: -50px;
-    left: auto;
-  }
-}
+    .roadmap-item::before {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #ffcc00;
+      top: 30px;
+    }
 
+    .roadmap-item:nth-child(odd)::before {
+      left: -50px;
+    }
+
+    .roadmap-item:nth-child(even)::before {
+      right: -50px;
+    }
+
+    .roadmap-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(255, 204, 0, 0.2);
+    }
+
+    .roadmap-item strong {
+      color: #ffcc00;
+      font-size: 1.3rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
 
 
 
