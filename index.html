@@ -888,27 +888,65 @@ header.scrolled {
     <p>&copy; 2025 YamalCoin. All rights reserved.</p>
     <p>Cryptocurrency investments are subject to high market risk. YamalCoin is not responsible for your trading losses.</p>
   </footer>
-  
- <script>
+  <script>
   function toggleMenu() {
     document.getElementById("nav").classList.toggle("active");
   }
 
-  window.addEventListener("scroll", function() {
-    const header = document.querySelector("header");
-    header.classList.toggle("scrolled", window.scrollY > 100);
-  });
+  window.addEventListener('scroll', function () {
+    const sections = document.querySelectorAll('.about-section, .tokenomics, #roadmap, #contact');
+    const triggerBottom = window.innerHeight * 0.85;
 
-  // Graficul Tokenomics
+    sections.forEach(section => {
+      const sectionTop = section.getBoundingClientRect().top;
+      if (sectionTop < triggerBottom) {
+        section.style.opacity = '1';
+      }
+    });
+  });
+</script>
+
+    <script>
+  window.addEventListener("scroll", function() {
+    var header = document.querySelector("header");
+    if (window.scrollY > 100) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  });
+</script>  <script>
+  window.addEventListener("scroll", function() {
+    var header = document.querySelector("header");
+    if (window.scrollY > 100) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  });
+</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+
+  <script>
   document.addEventListener('DOMContentLoaded', function() {
     const ctx = document.getElementById('tokenomicsChart').getContext('2d');
-    new Chart(ctx, {
+    
+    const tokenomicsChart = new Chart(ctx, {
       type: 'pie',
       data: {
-        labels: ['Burn (5%)', 'Marketing (5%)', 'Reflection (5%)', 'Circulating Supply (85%)'],
+        labels: ['Burn (1%)', 'Marketing (1%)', 'Reflection (1%)', 'Circulating Supply (97%)'],
         datasets: [{
-          data: [5, 5, 5, 85],
-          backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
+          data: [1, 1, 1, 97], // Procentele
+          backgroundColor: [
+            '#FF6384', // Burn
+            '#36A2EB', // Marketing
+            '#FFCE56', // Reflection
+            '#4BC0C0'  // Circulating
+          ],
           borderColor: 'rgba(0, 0, 0, 0.1)',
           borderWidth: 1
         }]
@@ -918,11 +956,20 @@ header.scrolled {
         plugins: {
           legend: {
             position: 'bottom',
-            labels: { color: '#fff', font: { family: 'Inter', size: 14 } }
+            labels: {
+              color: '#fff', // Culoare text pentru dark theme
+              font: {
+                family: 'Inter', // Folosește același font
+                size: 14
+              }
+            }
           },
           tooltip: {
+            enabled: true,
             callbacks: {
-              label: (context) => `${context.label}: ${context.raw}%`
+              label: function(context) {
+                return `${context.label}: ${context.raw}%`;
+              }
             }
           }
         }
